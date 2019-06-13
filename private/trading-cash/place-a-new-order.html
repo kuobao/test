@@ -98,6 +98,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../error-documentation.html">
+            
+                <a href="../../error-documentation.html">
+            
+                    
+                    Error documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
 
@@ -239,7 +258,8 @@
                                 <p><strong>Place a New Order</strong></p>
 <p>This endpoints places a new order from user&apos;s cash account.</p>
 <pre><code>POST api/v2/cash/order
-</code></pre><p><strong>Requested Parameters</strong></p>
+</code></pre><hr>
+<p><strong>Requested Parameters</strong></p>
 <table>
 <thead>
 <tr>
@@ -249,7 +269,6 @@
 <th style="text-align:left">Default</th>
 <th style="text-align:left">Description</th>
 <th style="text-align:left">Value Range</th>
-<th style="text-align:left">Example</th>
 </tr>
 </thead>
 <tbody>
@@ -258,27 +277,24 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">Yes</td>
 <td style="text-align:left">NA</td>
-<td style="text-align:left">a unique identifier of length 32</td>
+<td style="text-align:left">a unique identifier of length 32 which consists of only lower case characters (a-z), upper case characters (A-Z) and digits (0-9)</td>
 <td style="text-align:left"></td>
-<td style="text-align:left">&quot;xxx .... xxx&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">time</td>
 <td style="text-align:left">long</td>
 <td style="text-align:left">Yes</td>
 <td style="text-align:left">NA</td>
-<td style="text-align:left">milliseconds since UNIX epoch in UTC</td>
+<td style="text-align:left">milliseconds since UNIX epoch in UTC, requests placed more than 30 seconds ago are treated as expired and will not be processed</td>
 <td style="text-align:left"></td>
-<td style="text-align:left">1528988100000</td>
 </tr>
 <tr>
 <td style="text-align:left">symbol</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Yes</td>
 <td style="text-align:left">NA</td>
+<td style="text-align:left">Trading symbol to trade</td>
 <td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left">&quot;ETH/BTC&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">orderPrice</td>
@@ -287,7 +303,6 @@
 <td style="text-align:left">NA</td>
 <td style="text-align:left">required for limit orders and stop orders</td>
 <td style="text-align:left"></td>
-<td style="text-align:left">&quot;13.5&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">stopPrice</td>
@@ -296,34 +311,30 @@
 <td style="text-align:left">NA</td>
 <td style="text-align:left">required for limit orders and stop orders</td>
 <td style="text-align:left"></td>
-<td style="text-align:left">&quot;15.7&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">orderQty</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Yes</td>
 <td style="text-align:left">NA</td>
+<td style="text-align:left">The quantity of the order</td>
 <td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left">&quot;3.5&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">orderType</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Yes</td>
 <td style="text-align:left">NA</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">the type of the the order</td>
 <td style="text-align:left">&quot;limit&quot;, &quot;market&quot;, &quot;stop_markter&quot;, &quot;stop_limit&quot;</td>
-<td style="text-align:left">&quot;limit&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">side</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Yes</td>
 <td style="text-align:left">NA</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">trader&apos;s side</td>
 <td style="text-align:left">&quot;buy&quot;, &quot;sell&quot;</td>
-<td style="text-align:left">&quot;buy&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">postOnly</td>
@@ -332,7 +343,6 @@
 <td style="text-align:left">False</td>
 <td style="text-align:left">if true, the order will either be posted to the limit order book or be cancelled, i.e. the order cannot take liquidity</td>
 <td style="text-align:left">True, False</td>
-<td style="text-align:left">True</td>
 </tr>
 <tr>
 <td style="text-align:left">timeInForce</td>
@@ -341,19 +351,18 @@
 <td style="text-align:left">&quot;GTC&quot;</td>
 <td style="text-align:left">Currently, we support &quot;GTC&quot; (good-till-canceled) and &quot;IOC&quot; (immediate-or-cancel).</td>
 <td style="text-align:left">&quot;GTC, &quot;IOC&quot;</td>
-<td style="text-align:left">&quot;GTC&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">sync</td>
 <td style="text-align:left">boolean</td>
 <td style="text-align:left">No</td>
 <td style="text-align:left">False</td>
-<td style="text-align:left">if true, user will be acknowledged whether the order has been accepted by the matching engine. The status in response content will be either &apos;accepted&apos; or &apos;rejected&apos;</td>
+<td style="text-align:left">if true, the &apos;status&apos; field in response will demonstrate the status of the order in matching engine  (note that it will slow down the response speed)</td>
 <td style="text-align:left">True, False</td>
-<td style="text-align:left">False</td>
 </tr>
 </tbody>
 </table>
+<hr>
 <p><strong>Response Content:</strong></p>
 <table>
 <thead>
@@ -367,31 +376,124 @@
 <tr>
 <td style="text-align:left">coid</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">action</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">a unique identifier of length 32 (see above)</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">submitted, accepted or rejected</td>
+<td style="text-align:left">order stauts (see below)</td>
 </tr>
 </tbody>
 </table>
+<hr>
+<p><strong>Request body: </strong>application/json</p>
+<p><strong>Example:</strong></p>
+<pre><code>{
+    &apos;coid&apos;: &quot;98D98gzoVcE1U6UC7C7mupckj4rhOoJ0&quot;
+    &apos;time&apos;: 1560376869740
+    &apos;symbol&apos;: &quot;BTH/ETC&quot; 
+    &apos;orderPrice&apos;: &quot;0.0315&quot;
+    &apos;stopPrice&apos;: None
+    &apos;orderQty&apos;: &quot;1.2&quot;
+    &apos;orderType&apos;: &quot;limit&quot;
+    &apos;side&apos;: &quot;buy&quot;
+    &apos;postOnly&apos;: None
+    &apos;timeInForce&apos;: None
+    &apos;sync&apos;: None
+}
+</code></pre><hr>
 <p><strong>Successful Response Example:</strong></p>
 <pre><code>{
-    &quot;status&quot;: 200,
-    &quot;timestamp&quot;: 1499223904680,
-    &quot;data&quot;:{
-        &quot;coid&quot;: &quot;xxx...xxx&quot;
-        &quot;action&quot;: &quot;new&quot;
-        &quot;suceess&quot;: true
-    }
+   &apos;code&apos;: 0,
+   &apos;data&apos;: {&apos;coid&apos;: &apos;98D98gzoVcE1U6UC7C7mupckj4rhOoJ0&apos;, &apos;status&apos;: &apos;submitted&apos;},
+   &apos;email&apos;: &apos;kuo.bao@test.com&apos;,
+   &apos;timestamp&apos;: 1560376869740
 }
-</code></pre>
+</code></pre><hr>
+<p><strong>Other Info:</strong></p>
+<ul>
+<li>For this API you must include x-auth-coid in your request header.</li>
+<li>Order status: An order may be in one of the following status in the matching engine: pendingNew(only available for stop orders), New, PartiallyFilled, Filled, Canceled, Rejected. If the status is &apos;submitted&apos;, it means the order is valid and has been received by the server. <strong>However, it doesn&apos;t imply that the order has been succssfully submitted to the matching engine. </strong>API users who want to know the status of the order in the matching engine should set &apos;sync&apos; filed in the request body to be true (note that it will slow down the response speed). API users can always use the list open order API to monitor the status of the order placed.</li>
+<li>API users should be careful about decimal places for oderPrice, stopPrice and orderQty. The number of decimal places for orderPrice/ stopPrice should not exceed priceScale, and that for orderQty should not exceed qtyScale, otherwise, they will be rounded. (prcieScale / qtyScale for each symbol can be obtained from API GET api/v1/products)</li>
+<li>The table below shows how to correctly configure order of different types: (o- required, x - optional)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">coid</th>
+<th style="text-align:left">time</th>
+<th style="text-align:left">symbol</th>
+<th style="text-align:left">orderPrice</th>
+<th style="text-align:left">orderQty</th>
+<th style="text-align:left">orderType</th>
+<th style="text-align:left">side</th>
+<th style="text-align:left">postOnly</th>
+<th style="text-align:left">stopPrice</th>
+<th style="text-align:left">timeInForce</th>
+<th style="text-align:left">sync</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Market</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">x</td>
+</tr>
+<tr>
+<td style="text-align:left">Limit</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">x</td>
+</tr>
+<tr>
+<td style="text-align:left">StopMarket</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">x</td>
+</tr>
+<tr>
+<td style="text-align:left">StopLimit</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">x</td>
+</tr>
+</tbody>
+</table>
+
                                 
                                 </section>
                             
@@ -430,7 +532,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Place a New Order","level":"3.1.1","depth":2,"previous":{"title":"Trading - Cash","level":"3.1","depth":1,"path":"private/trading-cash.md","ref":"private/trading-cash.md","articles":[{"title":"Place a New Order","level":"3.1.1","depth":2,"path":"private/trading-cash/place-a-new-order.md","ref":"private/trading-cash/place-a-new-order.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"private/trading-cash/place-a-new-order.md","mtime":"2019-06-11T19:30:19.014Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-11T19:31:58.634Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Place a New Order","level":"3.1.1","depth":2,"previous":{"title":"Trading - Cash","level":"3.1","depth":1,"path":"private/trading-cash.md","ref":"private/trading-cash.md","articles":[{"title":"Place a New Order","level":"3.1.1","depth":2,"path":"private/trading-cash/place-a-new-order.md","ref":"private/trading-cash/place-a-new-order.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"private/trading-cash/place-a-new-order.md","mtime":"2019-06-13T22:33:49.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-13T22:35:21.469Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -438,10 +540,6 @@
         
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
-    
-        
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
