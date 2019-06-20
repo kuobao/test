@@ -1,0 +1,456 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Cancel an Order · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="place-a-new-order.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../error-documentation.html">
+            
+                <a href="../../error-documentation.html">
+            
+                    
+                    Error documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Public</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../public/common.html">
+            
+                <a href="../../public/common.html">
+            
+                    
+                    Common
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../public/common/test-connectivity.html">
+            
+                <a href="../../public/common/test-connectivity.html">
+            
+                    
+                    Test Connectivity
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../public/market.html">
+            
+                <a href="../../public/market.html">
+            
+                    
+                    Market
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Private</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../trading-cash.html">
+            
+                <a href="../trading-cash.html">
+            
+                    
+                    Trading - Cash
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="place-a-new-order.html">
+            
+                <a href="place-a-new-order.html">
+            
+                    
+                    Place a New Order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.2" data-path="cancel-an-order.html">
+            
+                <a href="cancel-an-order.html">
+            
+                    
+                    Cancel an Order
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Cancel an Order</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><strong>Cancel an Order</strong></p>
+<p>This endpoint submits a request to cancel a cash account open order</p>
+<pre><code>DELETE api/v2/cash/order
+</code></pre><hr>
+<p><strong>API Key Permission:</strong> Trade</p>
+<hr>
+<p><strong>Requested Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">FieldName</th>
+<th style="text-align:left">FieldType</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Default</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">coid</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">NA</td>
+<td style="text-align:left">a unique identifier of length 32 which consists of only lower case characters (a-z), upper case characters (A-Z) and digits (0-9)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">origCoid</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">NA</td>
+<td style="text-align:left">the coid of the order to cancel</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">time</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">NA</td>
+<td style="text-align:left">milliseconds since UNIX epoch in UTC, requests placed more than 30 seconds ago are treated as expired and will not be processed</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">symbol</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">NA</td>
+<td style="text-align:left">Trading symbol to trade</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">sync</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">False</td>
+<td style="text-align:left">if true, the &apos;status&apos; field in response will demonstrate the status of the order in matching engine (note that it will slow down the response speed)</td>
+<td style="text-align:left">True, False</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Response Content:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">FieldName</th>
+<th style="text-align:left">FiledType</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">coid</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">a unique identifier of length 32 (see above)</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">request status (see below)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Request body: </strong>application/json</p>
+<p><strong>Example:</strong></p>
+<pre><code>{
+    &apos;coid&apos;: &quot;lDk7dmxzPMc28ysU76ZfWlT7egaj5Vl4&quot;,
+    &apos;origCoid&apos;: &quot;BqkMET6srJ7iou2p08wQUGKTf5dCtSi0&quot;,
+    &apos;time&apos;: 1561043163688,
+    &apos;symbol&apos;: &quot;BTH/ETC&quot;, 
+    &apos;sync&apos;: None
+}
+</code></pre><hr>
+<p><strong>Successful Response Example:</strong></p>
+<pre><code>{
+   &apos;code&apos;: 0,
+   &apos;data&apos;: {&apos;coid&apos;: &apos;lDk7dmxzPMc28ysU76ZfWlT7egaj5Vl4&apos;, &apos;status&apos;: &apos;submitted&apos;},
+   &apos;email&apos;: &apos;kuo.bao@test.com&apos;,
+   &apos;timestamp&apos;: 1561043164195
+}
+</code></pre><hr>
+<p><strong>Other Info:</strong></p>
+<ul>
+<li>For this API you must include x-auth-coid in your request header.</li>
+<li>Note that you must use the cash account API to cancel cash orders and margin account API to cancel margin orders.</li>
+<li>Request status: The status of a request to cancel a cash account open order can be &apos;Rejected&apos;, &apos;Canceled&apos; or &apos;Submitted&apos;. &apos;Rejected&apos; means the request has been rejected and &apos;Canceled&apos; means the cash account open order has been successfully canceled. If the status is &apos;submitted&apos;, it means that the request has been received by the server. <strong>However, it doesn&apos;t imply that the order has been successfully canceled in matching engine. </strong>If &apos;sync&apos; field in request body is false, the &apos;status&apos; field in response will always be &apos;submitted&apos;. API users who want to know the status of the request should set &apos;sync&apos; filed in the request body to be true (note that it will slow down the response speed and the &apos;status&apos; field in response can still be &apos;submitted&apos;). API users are highly recommended to use websocket to monitor the status of the order placed. </li>
+<li>Note that to allow clients to cancel immediately after placing an order, we do not check against open oders when user submits a request to cancel a cash account open order. It means that if there is no order in the matching engine whose coid is the origCoid in the request body, the response will still be a successful response instead of a failed resposne with error code and message. </li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="place-a-new-order.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Place a New Order">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Cancel an Order","level":"3.1.2","depth":2,"previous":{"title":"Place a New Order","level":"3.1.1","depth":2,"path":"private/trading-cash/place-a-new-order.md","ref":"private/trading-cash/place-a-new-order.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"private/trading-cash/cancel-an-order.md","mtime":"2019-06-20T15:59:12.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T17:34:33.472Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

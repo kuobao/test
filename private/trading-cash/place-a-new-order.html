@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="cancel-an-order.html" />
+    
     
     <link rel="prev" href="../trading-cash.html" />
     
@@ -205,6 +207,19 @@
             
         </li>
     
+        <li class="chapter " data-level="3.1.2" data-path="cancel-an-order.html">
+            
+                <a href="cancel-an-order.html">
+            
+                    
+                    Cancel an Order
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -256,10 +271,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><strong>Place a New Order</strong></p>
-<p>This endpoints places a new order from user&apos;s cash account.</p>
+<p>This endpoint submits a request to place a new order from user&apos;s cash account.</p>
 <pre><code>POST api/v2/cash/order
 </code></pre><hr>
-<p><strong>Requested Parameters</strong></p>
+<p><strong>API Key Permission:</strong> Trade</p>
+<hr>
+<p><strong>Requested Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -389,16 +406,16 @@
 <p><strong>Request body: </strong>application/json</p>
 <p><strong>Example:</strong></p>
 <pre><code>{
-    &apos;coid&apos;: &quot;98D98gzoVcE1U6UC7C7mupckj4rhOoJ0&quot;
-    &apos;time&apos;: 1560376869740
-    &apos;symbol&apos;: &quot;BTH/ETC&quot; 
-    &apos;orderPrice&apos;: &quot;0.0315&quot;
-    &apos;stopPrice&apos;: None
-    &apos;orderQty&apos;: &quot;1.2&quot;
-    &apos;orderType&apos;: &quot;limit&quot;
-    &apos;side&apos;: &quot;buy&quot;
-    &apos;postOnly&apos;: None
-    &apos;timeInForce&apos;: None
+    &apos;coid&apos;: &quot;98D98gzoVcE1U6UC7C7mupckj4rhOoJ0&quot;,
+    &apos;time&apos;: 1561043031451,
+    &apos;symbol&apos;: &quot;BTH/ETC&quot;,
+    &apos;orderPrice&apos;: &quot;0.0315&quot;,
+    &apos;stopPrice&apos;: None,
+    &apos;orderQty&apos;: &quot;1.2&quot;,
+    &apos;orderType&apos;: &quot;limit&quot;,
+    &apos;side&apos;: &quot;buy&quot;,
+    &apos;postOnly&apos;: None,
+    &apos;timeInForce&apos;: None,
     &apos;sync&apos;: None
 }
 </code></pre><hr>
@@ -407,13 +424,13 @@
    &apos;code&apos;: 0,
    &apos;data&apos;: {&apos;coid&apos;: &apos;98D98gzoVcE1U6UC7C7mupckj4rhOoJ0&apos;, &apos;status&apos;: &apos;submitted&apos;},
    &apos;email&apos;: &apos;kuo.bao@test.com&apos;,
-   &apos;timestamp&apos;: 1560376869740
+   &apos;timestamp&apos;: 1561043031959
 }
 </code></pre><hr>
 <p><strong>Other Info:</strong></p>
 <ul>
 <li>For this API you must include x-auth-coid in your request header.</li>
-<li>Order status: An order may be in one of the following status in the matching engine: pendingNew(only available for stop orders), New, PartiallyFilled, Filled, Canceled, Rejected. If the status is &apos;submitted&apos;, it means the order is valid and has been received by the server. <strong>However, it doesn&apos;t imply that the order has been succssfully submitted to the matching engine. </strong>API users who want to know the status of the order in the matching engine should set &apos;sync&apos; filed in the request body to be true (note that it will slow down the response speed). API users can always use the list open order API to monitor the status of the order placed.</li>
+<li>Order status: An order may be in one of the following status in the matching engine: pendingNew(only available for stop orders), New, PartiallyFilled, Filled, Canceled, Rejected. If the status is &apos;submitted&apos;, it means the order is valid and has been received by the server. <strong>However, it doesn&apos;t imply that the order has been successfully submitted to the matching engine. </strong>If &apos;sync&apos; field in request body is false, the &apos;status&apos; field in response will always be &apos;submitted&apos;. API users who want to know the status of the order in the matching engine should set &apos;sync&apos; filed in the request body to be true (note that it will slow down the response speed and the &apos;status&apos; field in response can still be &apos;submitted&apos;). API users can always use the list open order API to monitor the status of the order placed.</li>
 <li>API users should be careful about decimal places for oderPrice, stopPrice and orderQty. The number of decimal places for orderPrice/ stopPrice should not exceed priceScale, and that for orderQty should not exceed qtyScale, otherwise, they will be rounded. (prcieScale / qtyScale for each symbol can be obtained from API GET api/v1/products)</li>
 <li>The table below shows how to correctly configure order of different types: (o- required, x - optional)</li>
 </ul>
@@ -520,10 +537,14 @@
 
             
                 
-                <a href="../trading-cash.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Trading - Cash">
+                <a href="../trading-cash.html" class="navigation navigation-prev " aria-label="Previous page: Trading - Cash">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="cancel-an-order.html" class="navigation navigation-next " aria-label="Next page: Cancel an Order">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -532,7 +553,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Place a New Order","level":"3.1.1","depth":2,"previous":{"title":"Trading - Cash","level":"3.1","depth":1,"path":"private/trading-cash.md","ref":"private/trading-cash.md","articles":[{"title":"Place a New Order","level":"3.1.1","depth":2,"path":"private/trading-cash/place-a-new-order.md","ref":"private/trading-cash/place-a-new-order.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"private/trading-cash/place-a-new-order.md","mtime":"2019-06-13T22:33:49.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-13T22:35:21.469Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Place a New Order","level":"3.1.1","depth":2,"next":{"title":"Cancel an Order","level":"3.1.2","depth":2,"path":"private/trading-cash/cancel-an-order.md","ref":"private/trading-cash/cancel-an-order.md","articles":[]},"previous":{"title":"Trading - Cash","level":"3.1","depth":1,"path":"private/trading-cash.md","ref":"private/trading-cash.md","articles":[{"title":"Place a New Order","level":"3.1.1","depth":2,"path":"private/trading-cash/place-a-new-order.md","ref":"private/trading-cash/place-a-new-order.md","articles":[]},{"title":"Cancel an Order","level":"3.1.2","depth":2,"path":"private/trading-cash/cancel-an-order.md","ref":"private/trading-cash/cancel-an-order.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"private/trading-cash/place-a-new-order.md","mtime":"2019-06-20T15:59:12.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T17:34:33.472Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
